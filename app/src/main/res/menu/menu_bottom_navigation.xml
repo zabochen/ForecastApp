@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menuBottomNavigation_itemTodayWeather"
+        android:icon="@drawable/ic_today_weather_black_48"
+        android:title="@string/bottomNavigationMenu_item_todayWeather"/>
+
+    <item
+        android:id="@+id/menuBottomNavigation_itemWeekWeather"
+        android:icon="@drawable/ic_list_weather_black_48"
+        android:title="@string/bottomNavigationMenu_item_listWeather"/>
+
+    <item
+        android:id="@+id/menuBottomNavigation_itemSettings"
+        android:icon="@drawable/ic_settings_black_48"
+        android:title="@string/bottomNavigationMenu_item_settings"/>
+
+</menu>

@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ForecastApp</string>
+
+    <!-- Bottom Navigation Menu -->
+    <string name="bottomNavigationMenu_item_todayWeather">Today</string>
+    <string name="bottomNavigationMenu_item_listWeather">Week</string>
+    <string name="bottomNavigationMenu_item_settings">Settings</string>
+</resources>
