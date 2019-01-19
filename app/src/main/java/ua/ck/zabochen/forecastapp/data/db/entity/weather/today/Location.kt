@@ -1,4 +1,4 @@
-package ua.ck.zabochen.forecastapp.data.db.entity
+package ua.ck.zabochen.forecastapp.data.db.entity.weather.today
 
 import com.google.gson.annotations.SerializedName
 

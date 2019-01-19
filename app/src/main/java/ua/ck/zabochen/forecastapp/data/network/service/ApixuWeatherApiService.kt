@@ -1,4 +1,4 @@
-package ua.ck.zabochen.forecastapp.data.network
+package ua.ck.zabochen.forecastapp.data.network.service
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import kotlinx.coroutines.Deferred
@@ -10,7 +10,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
-import ua.ck.zabochen.forecastapp.data.network.response.weather.current.TodayWeatherResponse
+import ua.ck.zabochen.forecastapp.data.network.interceptor.connection.ConnectionStateInterceptor
+import ua.ck.zabochen.forecastapp.data.network.response.weather.today.TodayWeatherResponse
 
 const val API_KEY: String = "9ab5fb2053854c85a2c73427191301"
 
@@ -20,12 +21,14 @@ interface ApixuWeatherApiService {
 
     @GET("current.json")
     fun getCurrentWeather(
-        @Query("q") location: String,
-        @Query("lang") languageCode: String = "en"
+        @Query("q") city: String,
+        @Query("lang") language: String = "en"
     ): Deferred<TodayWeatherResponse>
 
     companion object {
-        operator fun invoke(): ApixuWeatherApiService {
+        operator fun invoke(
+            connectionStateInterceptor: ConnectionStateInterceptor
+        ): ApixuWeatherApiService {
             val requestInterceptor = Interceptor { chain ->
                 val updatedUrl: HttpUrl = chain.request().url().newBuilder()
                     .addQueryParameter("key", API_KEY)
@@ -39,6 +42,7 @@ interface ApixuWeatherApiService {
 
             val okHttpClient = OkHttpClient.Builder()
                 .addInterceptor(requestInterceptor)
+                .addInterceptor(connectionStateInterceptor)
                 .build()
 
             return Retrofit.Builder()
