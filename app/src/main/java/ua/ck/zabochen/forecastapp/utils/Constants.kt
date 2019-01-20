@@ -1,5 +1,8 @@
 package ua.ck.zabochen.forecastapp.utils
 
+// Network
+const val APIXU_API_KEY: String = "9ab5fb2053854c85a2c73427191301"
+
 // Database
 const val DATABASE_NAME: String = "forecast_app.db"
 const val DATABASE_VERSION: Int = 1

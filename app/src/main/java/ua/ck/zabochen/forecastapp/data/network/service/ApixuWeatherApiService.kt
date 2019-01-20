@@ -12,10 +12,10 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 import ua.ck.zabochen.forecastapp.data.network.interceptor.connection.ConnectionStateInterceptor
 import ua.ck.zabochen.forecastapp.data.network.response.weather.today.TodayWeatherResponse
+import ua.ck.zabochen.forecastapp.utils.APIXU_API_KEY
 
-const val API_KEY: String = "9ab5fb2053854c85a2c73427191301"
-
-// http://api.apixu.com/v1/current.json?key=9ab5fb2053854c85a2c73427191301&q=cherkasy
+// Request example
+// https://api.apixu.com/v1/current.json?key=9ab5fb2053854c85a2c73427191301&q=cherkasy
 
 interface ApixuWeatherApiService {
 
@@ -31,7 +31,7 @@ interface ApixuWeatherApiService {
         ): ApixuWeatherApiService {
             val requestInterceptor = Interceptor { chain ->
                 val updatedUrl: HttpUrl = chain.request().url().newBuilder()
-                    .addQueryParameter("key", API_KEY)
+                    .addQueryParameter("key", APIXU_API_KEY)
                     .build()
 
                 val updatedRequest: Request = chain.request().newBuilder()
@@ -41,8 +41,8 @@ interface ApixuWeatherApiService {
             }
 
             val okHttpClient = OkHttpClient.Builder()
-                .addInterceptor(requestInterceptor)
                 .addInterceptor(connectionStateInterceptor)
+                .addInterceptor(requestInterceptor)
                 .build()
 
             return Retrofit.Builder()

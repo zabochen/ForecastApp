@@ -14,12 +14,13 @@ import butterknife.Unbinder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import org.jetbrains.anko.AnkoLogger
 import ua.ck.zabochen.forecastapp.R
 import ua.ck.zabochen.forecastapp.data.network.WeatherNetworkImpl
 import ua.ck.zabochen.forecastapp.data.network.interceptor.connection.ConnectionStateInterceptorImpl
 import ua.ck.zabochen.forecastapp.data.network.service.ApixuWeatherApiService
 
-class TodayWeatherFragment : Fragment() {
+class TodayWeatherFragment : Fragment(), AnkoLogger {
 
     companion object {
         fun newInstance() = TodayWeatherFragment()
