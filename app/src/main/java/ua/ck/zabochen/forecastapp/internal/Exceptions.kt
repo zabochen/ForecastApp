@@ -1,4 +1,4 @@
-package ua.ck.zabochen.forecastapp.utils
+package ua.ck.zabochen.forecastapp.internal
 
 import java.io.IOException
 

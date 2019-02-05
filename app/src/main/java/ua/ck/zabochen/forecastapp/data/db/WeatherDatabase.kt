@@ -6,8 +6,8 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import ua.ck.zabochen.forecastapp.data.db.dao.weather.today.TodayWeatherDao
 import ua.ck.zabochen.forecastapp.data.db.entity.weather.today.TodayWeatherEntity
-import ua.ck.zabochen.forecastapp.utils.DATABASE_NAME
-import ua.ck.zabochen.forecastapp.utils.DATABASE_VERSION
+import ua.ck.zabochen.forecastapp.internal.DATABASE_NAME
+import ua.ck.zabochen.forecastapp.internal.DATABASE_VERSION
 
 @Database(
     entities = [TodayWeatherEntity::class],

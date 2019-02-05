@@ -6,7 +6,7 @@ import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import ua.ck.zabochen.forecastapp.data.network.response.weather.today.TodayWeatherResponse
 import ua.ck.zabochen.forecastapp.data.network.service.ApixuWeatherApiService
-import ua.ck.zabochen.forecastapp.utils.NoConnectionException
+import ua.ck.zabochen.forecastapp.internal.NoConnectionException
 
 class WeatherNetworkImpl(
     private val apixuWeatherApiService: ApixuWeatherApiService

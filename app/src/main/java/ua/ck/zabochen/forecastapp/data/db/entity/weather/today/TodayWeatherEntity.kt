@@ -4,8 +4,8 @@ import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
-import ua.ck.zabochen.forecastapp.utils.TABLE_TODAY_WEATHER_COLUMN_ID
-import ua.ck.zabochen.forecastapp.utils.TABLE_TODAY_WEATHER_TABLE_NAME
+import ua.ck.zabochen.forecastapp.internal.TABLE_TODAY_WEATHER_COLUMN_ID
+import ua.ck.zabochen.forecastapp.internal.TABLE_TODAY_WEATHER_TABLE_NAME
 
 @Entity(tableName = TABLE_TODAY_WEATHER_TABLE_NAME)
 data class TodayWeatherEntity(

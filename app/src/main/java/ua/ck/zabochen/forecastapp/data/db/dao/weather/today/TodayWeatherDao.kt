@@ -8,8 +8,8 @@ import androidx.room.Query
 import ua.ck.zabochen.forecastapp.data.db.entity.weather.today.TodayWeatherEntity
 import ua.ck.zabochen.forecastapp.data.db.entity.weather.today.measuresystem.ImperialSystemTodayWeatherEntity
 import ua.ck.zabochen.forecastapp.data.db.entity.weather.today.measuresystem.MetricSystemTodayWeatherEntity
-import ua.ck.zabochen.forecastapp.utils.TABLE_TODAY_WEATHER_COLUMN_ID
-import ua.ck.zabochen.forecastapp.utils.TABLE_TODAY_WEATHER_TABLE_NAME
+import ua.ck.zabochen.forecastapp.internal.TABLE_TODAY_WEATHER_COLUMN_ID
+import ua.ck.zabochen.forecastapp.internal.TABLE_TODAY_WEATHER_TABLE_NAME
 
 @Dao
 interface TodayWeatherDao {

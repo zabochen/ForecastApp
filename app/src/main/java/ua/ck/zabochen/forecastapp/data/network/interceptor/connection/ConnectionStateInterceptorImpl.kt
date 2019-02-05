@@ -5,7 +5,7 @@ import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import okhttp3.Interceptor
 import okhttp3.Response
-import ua.ck.zabochen.forecastapp.utils.NoConnectionException
+import ua.ck.zabochen.forecastapp.internal.NoConnectionException
 
 class ConnectionStateInterceptorImpl(
     context: Context

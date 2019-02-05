@@ -12,7 +12,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 import ua.ck.zabochen.forecastapp.data.network.interceptor.connection.ConnectionStateInterceptor
 import ua.ck.zabochen.forecastapp.data.network.response.weather.today.TodayWeatherResponse
-import ua.ck.zabochen.forecastapp.utils.APIXU_API_KEY
+import ua.ck.zabochen.forecastapp.internal.APIXU_API_KEY
 
 // Request example
 // https://api.apixu.com/v1/current.json?key=9ab5fb2053854c85a2c73427191301&q=cherkasy
