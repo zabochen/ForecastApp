@@ -1,6 +1,6 @@
 package ua.ck.zabochen.forecastapp.internal
 
-// Network
+// APIXU API
 const val APIXU_API_KEY: String = "9ab5fb2053854c85a2c73427191301"
 
 // Database
