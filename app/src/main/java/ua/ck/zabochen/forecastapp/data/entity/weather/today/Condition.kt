@@ -1,4 +1,4 @@
-package ua.ck.zabochen.forecastapp.data.db.entity.weather.today
+package ua.ck.zabochen.forecastapp.data.entity.weather.today
 
 data class Condition(
     val text: String,

@@ -10,7 +10,11 @@ import ua.ck.zabochen.forecastapp.R
 class SettingsFragment : Fragment() {
 
     companion object {
-        fun newInstance() = SettingsFragment()
+        fun newInstance(): SettingsFragment {
+            val bundle = Bundle()
+            bundle.putString("tag", "SettingsFragment")
+            return SettingsFragment().also { it.arguments = bundle }
+        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

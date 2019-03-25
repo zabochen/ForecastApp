@@ -14,6 +14,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import ua.ck.zabochen.forecastapp.R
 import ua.ck.zabochen.forecastapp.ui.weather.today.TodayWeatherFragment
 
+private const val TAG: String = "MainActivity"
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var mainViewModel: MainViewModel
@@ -35,7 +37,10 @@ class MainActivity : AppCompatActivity() {
         setViewModelSubscription()
 
         // Set default fragment
-        if (savedInstanceState == null) setFragment(TodayWeatherFragment.newInstance())
+        if (savedInstanceState == null) setFragment(
+            TodayWeatherFragment.newInstance(),
+            TodayWeatherFragment.newInstance().arguments?.getString("tag")
+        )
     }
 
     override fun onDestroy() {
@@ -64,16 +69,16 @@ class MainActivity : AppCompatActivity() {
 
     private fun setViewModelSubscription() {
         // Replace fragments
-        this.mainViewModel
-            .fragmentContainerState.observe(this, Observer<Fragment> { fragment ->
-            setFragment(fragment)
+        this.mainViewModel.fragmentContainerState.observe(this, Observer<Fragment> { fragment ->
+            setFragment(fragment, fragment.arguments?.getString("tag"))
         })
-
     }
 
-    private fun setFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction()
-            .replace(fragmentContainer.id, fragment)
-            .commit()
+    private fun setFragment(fragment: Fragment, tag: String?) {
+        supportFragmentManager.findFragmentByTag(tag).also {
+            it ?: supportFragmentManager.beginTransaction()
+                .replace(fragmentContainer.id, fragment, tag)
+                .commit()
+        }
     }
 }

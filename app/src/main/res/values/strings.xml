@@ -5,4 +5,8 @@
     <string name="bottomNavigationMenu_item_todayWeather">Today</string>
     <string name="bottomNavigationMenu_item_listWeather">Week</string>
     <string name="bottomNavigationMenu_item_settings">Settings</string>
+
+    <!-- TodayWeather Fragment -->
+    <string name="todayWeatherFragment_textView_loading">Loading</string>
+
 </resources>

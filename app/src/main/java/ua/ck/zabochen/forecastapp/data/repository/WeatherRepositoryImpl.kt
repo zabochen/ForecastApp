@@ -7,9 +7,9 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.threeten.bp.ZonedDateTime
 import ua.ck.zabochen.forecastapp.data.db.dao.weather.today.TodayWeatherDao
-import ua.ck.zabochen.forecastapp.data.db.entity.weather.today.measuresystem.MeasureSystemTodayWeatherEntity
+import ua.ck.zabochen.forecastapp.data.entity.weather.today.TodayWeatherResponse
+import ua.ck.zabochen.forecastapp.data.entity.weather.today.measuresystem.MeasureSystemTodayWeatherEntity
 import ua.ck.zabochen.forecastapp.data.network.WeatherNetwork
-import ua.ck.zabochen.forecastapp.data.network.response.weather.today.TodayWeatherResponse
 import java.util.*
 
 class WeatherRepositoryImpl(
@@ -49,6 +49,7 @@ class WeatherRepositoryImpl(
 
     override suspend fun getTodayWeather(metricSystem: Boolean): LiveData<out MeasureSystemTodayWeatherEntity> {
         return withContext(Dispatchers.IO) {
+            initTodayWeather()
             return@withContext if (metricSystem) {
                 todayWeatherDao.getTodayWeatherMetric()
             } else {

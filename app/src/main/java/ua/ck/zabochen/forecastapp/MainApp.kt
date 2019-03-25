@@ -16,6 +16,12 @@ import ua.ck.zabochen.forecastapp.data.network.interceptor.connection.Connection
 import ua.ck.zabochen.forecastapp.data.network.service.ApixuWeatherApiService
 import ua.ck.zabochen.forecastapp.data.repository.WeatherRepository
 import ua.ck.zabochen.forecastapp.data.repository.WeatherRepositoryImpl
+import ua.ck.zabochen.forecastapp.di.AppComponent
+import ua.ck.zabochen.forecastapp.di.DaggerAppComponent
+import ua.ck.zabochen.forecastapp.di.module.AppModule
+import ua.ck.zabochen.forecastapp.di.module.DatabaseModule
+import ua.ck.zabochen.forecastapp.di.module.NetworkModule
+import ua.ck.zabochen.forecastapp.di.module.RepositoryModule
 
 class MainApp : Application(), KodeinAware {
 
@@ -37,9 +43,24 @@ class MainApp : Application(), KodeinAware {
         // Fragments
     }
 
+    companion object {
+        private lateinit var appComponent: AppComponent
+        fun appComponent(): AppComponent = appComponent
+    }
+
     override fun onCreate() {
         super.onCreate()
+        setDagger()
         setThreeTen()
+    }
+
+    private fun setDagger() {
+        appComponent = DaggerAppComponent.builder()
+            .appModule(AppModule(this))
+            .databaseModule(DatabaseModule())
+            .networkModule(NetworkModule())
+            .repositoryModule(RepositoryModule())
+            .build()
     }
 
     private fun setThreeTen() {

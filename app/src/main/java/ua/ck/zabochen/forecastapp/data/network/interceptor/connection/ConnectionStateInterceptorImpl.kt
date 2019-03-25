@@ -7,9 +7,7 @@ import okhttp3.Interceptor
 import okhttp3.Response
 import ua.ck.zabochen.forecastapp.internal.NoConnectionException
 
-class ConnectionStateInterceptorImpl(
-    context: Context
-) : ConnectionStateInterceptor {
+class ConnectionStateInterceptorImpl(context: Context) : ConnectionStateInterceptor {
 
     private val appContext = context.applicationContext
 

@@ -10,7 +10,11 @@ import ua.ck.zabochen.forecastapp.R
 class WeekWeatherFragment : Fragment() {
 
     companion object {
-        fun newInstance() = WeekWeatherFragment()
+        fun newInstance(): WeekWeatherFragment {
+            val bundle = Bundle()
+            bundle.putString("tag", "WeekWeatherFragment")
+            return WeekWeatherFragment().also { it.arguments = bundle }
+        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

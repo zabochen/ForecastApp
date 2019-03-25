@@ -10,8 +10,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
+import ua.ck.zabochen.forecastapp.data.entity.weather.today.TodayWeatherResponse
 import ua.ck.zabochen.forecastapp.data.network.interceptor.connection.ConnectionStateInterceptor
-import ua.ck.zabochen.forecastapp.data.network.response.weather.today.TodayWeatherResponse
+import ua.ck.zabochen.forecastapp.internal.APIXU_API_BASE_URL
 import ua.ck.zabochen.forecastapp.internal.APIXU_API_KEY
 
 // Request example
@@ -20,24 +21,26 @@ import ua.ck.zabochen.forecastapp.internal.APIXU_API_KEY
 interface ApixuWeatherApiService {
 
     @GET("current.json")
-    fun getCurrentWeather(
+    fun getCurrentWeatherAsync(
         @Query("q") city: String,
         @Query("lang") language: String = "en"
     ): Deferred<TodayWeatherResponse>
 
     companion object {
-        operator fun invoke(
-            connectionStateInterceptor: ConnectionStateInterceptor
-        ): ApixuWeatherApiService {
+        operator fun invoke(connectionStateInterceptor: ConnectionStateInterceptor): ApixuWeatherApiService {
             val requestInterceptor = Interceptor { chain ->
-                val updatedUrl: HttpUrl = chain.request().url().newBuilder()
+                val updatedUrl: HttpUrl = chain.request()
+                    .url()
+                    .newBuilder()
                     .addQueryParameter("key", APIXU_API_KEY)
                     .build()
 
-                val updatedRequest: Request = chain.request().newBuilder()
-                    .url(updatedUrl).build()
+                val updatedRequest: Request = chain.request()
+                    .newBuilder()
+                    .url(updatedUrl)
+                    .build()
 
-                chain.proceed(updatedRequest)
+                return@Interceptor chain.proceed(updatedRequest)
             }
 
             val okHttpClient = OkHttpClient.Builder()
@@ -47,7 +50,7 @@ interface ApixuWeatherApiService {
 
             return Retrofit.Builder()
                 .client(okHttpClient)
-                .baseUrl("https://api.apixu.com/v1/")
+                .baseUrl(APIXU_API_BASE_URL)
                 .addCallAdapterFactory(CoroutineCallAdapterFactory())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()

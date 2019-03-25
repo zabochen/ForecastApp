@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import ua.ck.zabochen.forecastapp.data.db.dao.weather.today.TodayWeatherDao
-import ua.ck.zabochen.forecastapp.data.db.entity.weather.today.TodayWeatherEntity
+import ua.ck.zabochen.forecastapp.data.entity.weather.today.TodayWeatherEntity
 import ua.ck.zabochen.forecastapp.internal.DATABASE_NAME
 import ua.ck.zabochen.forecastapp.internal.DATABASE_VERSION
 
@@ -24,8 +24,8 @@ abstract class WeatherDatabase : RoomDatabase() {
         private val lock = Any()
 
         operator fun invoke(context: Context): WeatherDatabase {
-            return instance ?: synchronized(lock) {
-                instance ?: buildWeatherDatabase(context).also { instance = it }
+            return instance ?: synchronized<WeatherDatabase>(lock) {
+                return instance ?: buildWeatherDatabase(context).also { instance = it }
             }
         }
 

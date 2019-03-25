@@ -1,4 +1,4 @@
-package ua.ck.zabochen.forecastapp.data.db.entity.weather.today.measuresystem
+package ua.ck.zabochen.forecastapp.data.entity.weather.today.measuresystem
 
 interface MeasureSystemTodayWeatherEntity {
     val temperature: Double

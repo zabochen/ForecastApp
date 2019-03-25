@@ -1,7 +1,7 @@
 package ua.ck.zabochen.forecastapp.data.network
 
 import androidx.lifecycle.LiveData
-import ua.ck.zabochen.forecastapp.data.network.response.weather.today.TodayWeatherResponse
+import ua.ck.zabochen.forecastapp.data.entity.weather.today.TodayWeatherResponse
 
 interface WeatherNetwork {
     val downloadedTodayWeather: LiveData<TodayWeatherResponse>
